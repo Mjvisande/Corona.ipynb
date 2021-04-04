@@ -16,16 +16,13 @@ url = 'https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19
 -geographic-disbtribution-worldwide-2020-03-26.xlsx' df_raw = pd.read_excel(url)
 
 df_raw['Countries and territories'].unique()
-![image](https://user-images.githubusercontent.com/79148207/113502399-afbd3380-951b-11eb-9807-911a0c6b1988.png)
 
 In [ ]:df = df_raw
 df = df[df['Countries and territories']=='United_States_of_America'] df = df.sort_values(['Year', 'Month' ,'Day'], ascending=[1, 1, 1])
 df['ts'] = pd.to_datetime(df[['Year', 'Month' ,'Day']])
-![image](https://user-images.githubusercontent.com/79148207/113502404-b9469b80-951b-11eb-8f33-b793eaa684c5.png)
 
 In [ ]:chart = sns.lineplot(x='ts', y='Cases', data=df, hue='Countries and terr itories')
 chart.set_xticklabels(df['ts'],rotation=45)
-![image](https://user-images.githubusercontent.com/79148207/113502408-bf3c7c80-951b-11eb-98b6-e7fa65ecdd72.png)
 
  
 Thank you for completing this lab!
